@@ -51,7 +51,7 @@ public class TestList {
     // TODO write assertions using
     // list.contains(77)
     // that hold before and after adding 77 to the list
-    assertFalse(list.contains(77));
+    org.junit.Assert.assertFalse(list.contains(77));
     list.add(77);
     assertTrue(list.contains(77));
   }
@@ -81,9 +81,9 @@ public class TestList {
     assertEquals(7, list.size());
     assertEquals(1, list.indexOf(77));
     assertEquals(5, list.lastIndexOf(77));
-    assertEquals(044, list.get(2).intValue());
+    assertEquals(44, list.get(2).intValue());
     assertEquals(77, list.get(3).intValue());
-    assertEquals(List.of(33, 77, 44, 77,55, 77, 66), list);
+    assertEquals(List.of(33, 77, 44, 77, 55, 77, 66), list);
   }
 
   @Test
@@ -105,9 +105,9 @@ public class TestList {
     list.remove(Integer.valueOf(5)); // TODO Question: What does this one do?
     assertEquals(5, list.size());
     assertEquals(1, list.indexOf(77));
-    assertEquals(2, list.lastIndexOf(77));
-    assertEquals(77, list.get(2).intValue());
-    assertEquals(6, list.get(3).intValue());
+    assertEquals(3, list.lastIndexOf(77));
+    assertEquals(4, list.get(2).intValue());
+    assertEquals(77, list.get(3).intValue());
   }
 
   @Test
@@ -123,8 +123,7 @@ public class TestList {
     // 1) assert that list contains all five different numbers added
     // 2) assert that list does not contain all of 11, 22, and 33
     assertTrue(list.containsAll(List.of(33, 77, 44, 55, 66)));
-    assertFalse(list.containsAll(List.of(11, 22, 33)));
-    fail("Not yet implemented"); // remove this line when done
+    org.junit.Assert.assertFalse(list.containsAll(List.of(11, 22, 33)));
   }
 
   @Test
@@ -133,6 +132,7 @@ public class TestList {
     // add items to the list to make the following assertions pass
     // (without touching the assertions themselves)
     list.addAll(List.of(33, 77, 44, 77, 55, 77, 66));
+
     assertEquals(7, list.size());
     assertEquals(33, list.get(0).intValue());
     assertEquals(77, list.get(1).intValue());
@@ -156,6 +156,7 @@ public class TestList {
     // remove items from the list to make the following assertions pass
     // (without touching the assertions themselves)
     list.removeAll(List.of(33, 44, 55, 66));
+
     assertEquals(3, list.size());
     assertEquals(List.of(77, 77, 77), list);
   }
@@ -173,6 +174,7 @@ public class TestList {
     // remove items from the list to make the following assertions pass
     // (without touching the assertions themselves)
     list.retainAll(List.of(77));
+
     assertEquals(3, list.size());
     assertEquals(List.of(77, 77, 77), list);
   }
