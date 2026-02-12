@@ -19,6 +19,7 @@ public class TestList {
   public void setUp() throws Exception {
     list = new ArrayList<Integer>();
     // TODO Question: Also try with a LinkedList - does it make any difference?
+    // LinkedList would apply all the same List interface methods but with different performance characteristics. So the functional results still remain the same for LinkedList.
   }
 
   @After
@@ -41,9 +42,9 @@ public class TestList {
   public void testSizeNonEmpty() {
     // TODO fix the expected values in the assertions below
     list.add(77);
-    assertEquals(false, list.isEmpty());
-    assertEquals(1, list.size());
-    assertEquals(77, list.get(0).intValue());
+    assertEquals(false, list.isEmpty()); //was expecting true incorrectly
+    assertEquals(1, list.size()); //was expecting 0 incorrectly
+    assertEquals(77, list.get(0).intValue()); //was expecting null incorrectly
   }
 
   @Test
@@ -51,8 +52,10 @@ public class TestList {
     // TODO write assertions using
     // list.contains(77)
     // that hold before and after adding 77 to the list
+    //Ssserting that the list does not have 77 before adding it.
     org.junit.Assert.assertFalse(list.contains(77));
     list.add(77);
+    //Asserting that the list does have 77 after adding it.
     assertTrue(list.contains(77));
   }
 
@@ -62,10 +65,10 @@ public class TestList {
     list.add(77);
     list.add(77);
     // TODO fix the expected values in the assertions below
-    assertEquals(3, list.size());
-    assertEquals(0, list.indexOf(77));
-    assertEquals(77, list.get(1).intValue());
-    assertEquals(2, list.lastIndexOf(77));
+    assertEquals(3, list.size()); //was expecting 1 incorrectly
+    assertEquals(0, list.indexOf(77)); //was expecting negative 1 incorrectly
+    assertEquals(77, list.get(1).intValue()); //was expecting null incorrectly
+    assertEquals(2, list.lastIndexOf(77)); //was expecting negative 1 incorrectly
   }
 
   @Test
@@ -78,7 +81,7 @@ public class TestList {
     list.add(77);
     list.add(66);
     // TODO fix the expected values in the assertions below
-    assertEquals(7, list.size());
+    assertEquals(7, list.size()); 
     assertEquals(1, list.indexOf(77));
     assertEquals(5, list.lastIndexOf(77));
     assertEquals(44, list.get(2).intValue());
@@ -95,7 +98,8 @@ public class TestList {
     list.add(5);
     list.add(77);
     list.add(6);
-    list.remove(5); // TODO Question: What does this method do?
+    list.remove(5); // TODO Question: What does this method do? 
+    //This method removes the element at index 5 which is the 6th element and thats 77.
     // TODO fix the expected values in the assertions below
     assertEquals(6, list.size());
     assertEquals(1, list.indexOf(77));
@@ -103,6 +107,7 @@ public class TestList {
     assertEquals(4, list.get(2).intValue());
     assertEquals(77, list.get(3).intValue());
     list.remove(Integer.valueOf(5)); // TODO Question: What does this one do?
+    //This removes the element with value 5, it removes the first occurance of the specified value. 
     assertEquals(5, list.size());
     assertEquals(1, list.indexOf(77));
     assertEquals(3, list.lastIndexOf(77));
@@ -191,9 +196,9 @@ public class TestList {
     // TODO use the set method to change specific elements in the list
     // such that the following assertions pass
     // (without touching the assertions themselves)
-    list.set(1,99);
-    list.set(3,99);
-    list.set(5,99);
+    list.set(1,99); //replacing element at index 1 with 99
+    list.set(3,99); //replacing element at index 3 with 99
+    list.set(5,99); //replacing element at index 5 with 99
 
     assertEquals(7, list.size());
     assertEquals(33, list.get(0).intValue());

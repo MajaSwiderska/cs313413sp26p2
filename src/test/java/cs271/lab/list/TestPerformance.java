@@ -12,15 +12,24 @@ public class TestPerformance {
   // TODO run test and record running times for SIZE = 10, 100, 1000, 10000, ...
   // (choose in conjunction with REPS below up to an upper limit where the clock
   // running time is in the tens of seconds)
+
   // TODO Question: What conclusions can you draw about the performance of LinkedList vs. ArrayList when
   // comparing their running times for AddRemove vs. Access? Record those running times in README.txt!
+  // My conclusion is that when it comes to add/remove LinkedList is much faster than ArrayList since LinkedList is (O(1)) and ArrayList is (O(n)).
+  // When it comes down to random access by the index the ArrayList is much more faster than LinkedList.
+  // Overall, use LinkedList when you need constant insertions and removals at the beggining or the middle.
+  // And use ArrayList wjem you need constant random access by index.
+  
   // TODO (optional) refactor to DRY
   // which of the two lists performs better as the size increases?
-  private final int SIZE = 1000;
+  // And as the size increases the performance differences show up more.
+  // Looking at it the LinkedList add/remove time stays constant no matter the size, while ArrayList add/remove time grows linear with the size.
+  // ArrayList access time does stay constant while LinkedList acces time grows linear with the size.
+  private final int SIZE = 1000; //number of elements in the list
 
   // TODO choose this value in such a way that you can observe an actual effect
   // for increasing problem sizes
-  private final int REPS = 10000;
+  private final int REPS = 10000; //number of repetitions of the operation
 
   private List<Integer> arrayList;
 

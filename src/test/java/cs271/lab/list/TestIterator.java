@@ -21,6 +21,7 @@ public class TestIterator {
   public void setUp() throws Exception {
     list = new ArrayList<Integer>();
     // TODO Question: Also try with a LinkedList - does it make any difference?
+    //Using a LinkedList would not change the functional result of the tests but both apply the List interface so the iterator logic still stays the same.
   }
 
   @After
@@ -31,6 +32,7 @@ public class TestIterator {
   @Test
   public void testEmpty() {
     final var i = list.iterator();
+    //A empty lists iterator should have no next element
     assertFalse(i.hasNext());
   }
 
@@ -74,13 +76,15 @@ public class TestIterator {
     final var i = list.iterator();
     while (i.hasNext()) {
       if (i.next() == 77) {
-        i.remove(); // TODO Question: What happens if you use list.remove(Integer.valueOf(77))?
+        i.remove(); 
+        // TODO Question: What happens if you use list.remove(Integer.valueOf(77))?
+        //It would throw a ConcurrentModificationExpectation, having i.remove() is the only less risky way to modify a list while iterating.
       }
     }
     // TODO using assertEquals and List.of, express which values are left in the list
     // See TestList.java for examples of how to use List.of; also see the Java List
     // interface for more information
-    assertEquals(List.of(33, 44, 55, 66), list);
+    assertEquals(List.of(33, 44, 55, 66), list); //Only elements not equal to 77 stay
   }
 
   @Test
@@ -97,10 +101,11 @@ public class TestIterator {
     // TODO use an iterator and a while loop to compute the average (mean) of the values
     // (defined as the sum of the items divided by the number of items)
     // testNonempty shows how to use an iterator; use i.hasNext() in the while loop condition
+    //Using an iterator and while loop to find the avergae mean of the values.
     final var i = list.iterator();
     while(i.hasNext()) {
-      sum += i.next();
-      n++;
+      sum += i.next(); //Adding each of the elements to the sum
+      n++; //Counting each of the elements
     }
     assertEquals(61.3, sum / n, 0.1);
     assertEquals(7, n);
